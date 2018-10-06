@@ -4,7 +4,7 @@
 ##################
 
 #ames_housing_data <- read_csv("Works1/ames_housing_data.csv")
-mydata <- read.csv(file="Works1/ames_housing_data.csv",head=TRUE,sep=",")
+mydata <- read.csv(file="data/ames_housing_data.csv",head=TRUE,sep=",")
 
 str(mydata)
 head(mydata)
