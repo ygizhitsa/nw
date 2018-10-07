@@ -1,0 +1,40 @@
+"SID"           "PID"           "SubClass"      "Zoning"        "LotFrontage"   "LotArea"      
+ [7] "Street"        "Alley"         "LotShape"      "LandContour"   "Utilities"     "LotConfig"    
+[13] "LandSlope"     "Neighborhood"  "Condition1"    "Condition2"    "BldgType"      "HouseStyle"   
+[19] "OverallQual"   "OverallCond"   "YearBuilt"     "YearRemodel"   "RoofStyle"     "RoofMat"      
+[25] "Exterior1"     "Exterior2"     "MasVnrType"    "MasVnrArea"    "ExterQual"     "ExterCond"    
+[31] "Foundation"    "BsmtQual"      "BsmtCond"      "BsmtExposure"  "BsmtFinType1"  "BsmtFinSF1"   
+[37] "BsmtFinType2"  "BsmtFinSF2"    "BsmtUnfSF"     "TotalBsmtSF"   "Heating"       "HeatingQC"    
+[43] "CentralAir"    "Electrical"    "FirstFlrSF"    "SecondFlrSF"   "LowQualFinSF"  "GrLivArea"    
+[49] "BsmtFullBath"  "BsmtHalfBath"  "FullBath"      "HalfBath"      "BedroomAbvGr"  "KitchenAbvGr" 
+[55] "KitchenQual"   "TotRmsAbvGrd"  "Functional"    "Fireplaces"    "FireplaceQu"   "GarageType"   
+[61] "GarageYrBlt"   "GarageFinish"  "GarageCars"    "GarageArea"    "GarageQual"    "GarageCond"   
+[67] "PavedDrive"    "WoodDeckSF"    "OpenPorchSF"   "EnclosedPorch" "ThreeSsnPorch" "ScreenPorch"  
+[73] "PoolArea"      "PoolQC"        "Fence"         "MiscFeature"   "MiscVal"       "MoSold"       
+[79] "YrSold"        "SaleType"      "SaleCondition" "SalePrice"   
+
+
+
+"PID"           "SubClass"     LotArea"      
+    "LandContour"   "Utilities"       
+"Neighborhood"  "BldgType"      "HouseStyle"   
+   "OverallCond"   "YearBuilt"     "YearRemodel"       
+      
+"TotalBsmtSF" , "Heating"    
+"CentralAir"    "Electrical"    "FirstFlrSF"    "SecondFlrSF"   "GrLivArea"    
+[49] 
+[55] 
+[61]  
+[67] 
+[73]       
+[79] "YrSold"          "SalePrice"    
+>  
+
+
+selected_columns <-c("PID","SubClass","LotArea","LandContour","Utilities","Neighborhood","BldgType","HouseStyle","OverallCond","YearBuilt","YearRemodel", 
+"TotalBsmtSF" , "Heating","CentralAir","Electrical","FirstFlrSF","SecondFlrSF","GrLivArea","YrSold","SalePrice")   
+
+propery_size_group <-c("LotArea","TotalBsmtSF","FirstFlrSF","SecondFlrSF","GrLivArea","SalePrice") 
+
+propery_quality_group <-c("PID","SubClass","LandContour","Utilities","Neighborhood","BldgType","HouseStyle","OverallCond","YearBuilt","YearRemodel", 
+"Heating","CentralAir","Electrical","YrSold","SalePrice")  

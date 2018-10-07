@@ -30,10 +30,18 @@ aggr_plot <- aggr(hdfmc, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, l
 
 #sales price
 sd(hdfmc$SalePrice)
+3*sd(hdfmc$SalePrice)
+
 summary(hdfmc$SalePrice)
 hist(hdfmc$SalePrice)
 plot(density(hdfmc$SalePrice))
-
+boxplot(hdfmc$SalePrice/100)
+boxplot.stats.min(hdfmc$SalePrice)
+?boxplot
+ggplot(subdat, aes(x=LotShape, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of HouseAge") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
 
 
   

@@ -16,17 +16,86 @@ mydata$logSalePrice <- log(mydata$SalePrice)
 mydata$price_sqft <- mydata$SalePrice/mydata$TotalFloorSF
 summary(mydata$price_sqft)
 hist(mydata$price_sqft)
-subdat <- subset(mydata, select=c("TotalFloorSF","HouseAge","QualityIndex",
-                                  "price_sqft", "SalePrice","LotArea",
+subdat <- subset(mydata, select=c("SalePrice","GrLivArea","GarageCars","FullBath",
+                                  "TotalFloorSF","HouseAge","QualityIndex",
+                                  "price_sqft", "LotArea",
                                   "BsmtFinSF1","Neighborhood","HouseStyle",
                                   "LotShape","OverallQual","logSalePrice",
-                                  "TotalBsmtSF","HouseStyle"))
+                                  "TotalBsmtSF","HouseStyle",
+                                  "SubClass","LandContour","Utilities","Neighborhood","BldgType","HouseStyle","OverallCond","YearBuilt","YearRemodel","Heating","CentralAir","Electrical","YrSold"
+                                  ))
 
 str(subdat)
 
 
-subdatnum <- subset(mydata, select=c("TotalFloorSF","HouseAge","QualityIndex",
-                                  "SalePrice","LotArea","OverallQual","logSalePrice"))
+subdatnum <- subset(mydata, select=c("SalePrice","TotalFloorSF","HouseAge","QualityIndex",
+                                     "GrLivArea","FullBath","SubClass", "price_sqft", 
+                                     "OverallCond","YearRemodel","YrSold",
+                                  "LotArea","OverallQual","logSalePrice"))
+
+
+library(corrplot)
+require(corrplot)
+mcor <- cor(subdatnum)
+corrplot(mcor, method="shade", shade.col=NA, tl.col="black",tl.cex=0.7)
+
+ 
+#","SubClass","LandContour","Utilities","Neighborhood","BldgType","HouseStyle","OverallCond","YearBuilt","YearRemodel","Heating","CentralAir","Electrical","YrSold","
+
+ggplot(subdat, aes(x=SubClass, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of SubClass") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+
+ggplot(subdat, aes(x=LandContour, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of LandContour") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+
+ggplot(subdat, aes(x=Utilities, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of Utilities") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+
+
+ggplot(subdat, aes(x=Neighborhood, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of Neighborhood") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+#Exclude consised and steady
+ggplot(subdat, aes(x=BldgType, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of BldgType") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+ggplot(subdat, aes(x=OverallCond, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of OverallCond") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+#Exclude consised and steady
+ggplot(subdat, aes(x=Heating, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of Heating") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+#Exclude consised and steady
+ggplot(subdat, aes(x=CentralAir, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of CentralAir") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+#Exclude consised and steady
+ggplot(subdat, aes(x=Electrical, y=SalePrice)) + 
+  geom_boxplot(fill="blue") +
+  labs(title="Distribution of Electrical") +
+  theme(plot.title=element_text(lineheight=0.8, face="bold", hjust=0.5))
+
+
 #####################################################################
 ######################### Assignment 1 ##############################
 #####################################################################
@@ -156,7 +225,7 @@ par(mfrow=c(1,1))  # visualize four graphs at once
 
 pred <- as.data.frame(predict(SLRresult,subdatnum,interval="prediction"))
 str(pred)
-head(pred)
+  head(pred)
 subdatnum <- cbind(subdatnum,pred)
 str(subdatnum)
 head(subdatnum)
